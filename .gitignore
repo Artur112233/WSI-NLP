@@ -1,0 +1,9 @@
+.idea
+.ipynb_checkpoints
+.pyre
+*.pyc
+
+# Images
+*.png
+*.gif
+
