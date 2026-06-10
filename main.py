@@ -1,11 +1,4 @@
-
-
-def analyze_string(text):
-    return "POSITIVE"
-
-
-def analyze_article_url(url):
-    return "NEGATIVE"
+import text_analyser as ta
 
 
 def main():
@@ -14,21 +7,25 @@ def main():
     print("=" * 45)
     run_program = True
 
+    analyser = ta.SentimentAnalyzer()
+
     while run_program:
         print("\nWybierz tryb działania:")
-        print("1 - Analiza artykułu z linku (URL)")
         print("2 - Analiza wpisanego tekstu")
+        print("1 - Analiza artykułu z linku (URL)")
         print("0 - Zakończ program")
 
-        input_mode_choice = input("\nTwój wybór (1/2/0): ")
+        input_mode_choice = input("\nTwój wybór (2/1/0): ")
         match input_mode_choice:
             case "2":
                 text = input("Wpisz tekst do analizy: ")
-                if not text.strip():
+                text = text.replace('"', '').replace("'", "").strip()
+
+                if not text:
                     print("Tekst nie może być pusty!")
                     continue
 
-                sentiment = analyze_string(url)
+                sentiment = analyser.analyse_text(text)
                 print("Według modelu ten artykuł jest: ", sentiment)
 
             case "1":
@@ -37,7 +34,7 @@ def main():
                     print("Link nie może być pusty!")
                     continue
 
-                sentiment = analyze_article_url(url)
+                sentiment = analyser.analyse_article_url(url)
                 print("Według modelu ten artykuł jest: ", sentiment)
 
             case "0":
