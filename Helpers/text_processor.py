@@ -26,15 +26,15 @@ class TextProcessor:
         doc = self.nlp(text)
         # tokens = [token.lemma_.lower() for token in doc if not token.is_stop and token.is_alpha] lepiej działa bez stop words
         #tokens = [token.lemma_.lower() for token in doc if token.is_alpha] lepiej działa bez sprawdzania alfy
-        tokens = [token.lemma_.lower() for token in doc if token not in self.custom_stop_words]
-        # tokens = [token.lemma_.lower() for token in doc] to jest takie samo jak z custom (wynikowo)
+        #tokens = [token.lemma_.lower() for token in doc if token.lemma_.lower() not in self.custom_stop_words] # custom
+        tokens = [token.lemma_.lower() for token in doc]# to jest jednak najlepsze
         return " ".join(tokens)
 
-    # def preprocess(self, text_list: list[str]) -> list[str]:
-    #     ret = []
-    #     for text in text_list:
-    #         ret.append(self.preprocess_single(text))
-    #     return ret
+    def preprocess_list(self, text_list: list[str]) -> list[str]:
+        ret = []
+        for text in text_list:
+            ret.append(self.preprocess_single(text))
+        return ret
 
-    def preprocess(self, text_series: Series) -> Series:
+    def preprocess_series(self, text_series: Series) -> Series:
         return text_series.apply(self.preprocess_single)

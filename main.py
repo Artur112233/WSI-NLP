@@ -1,16 +1,50 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def analyze_string(text):
+    return "POSITIVE"
 
 
-# Press the green button in the gutter to run the script.
+def analyze_article_url(url):
+    return "NEGATIVE"
+
+
+def main():
+    print("=" * 45)
+    print("      SYSTEM ANALIZY SENTYMENTU NLP      ")
+    print("=" * 45)
+    run_program = True
+
+    while run_program:
+        print("\nWybierz tryb działania:")
+        print("1 - Analiza artykułu z linku (URL)")
+        print("2 - Analiza wpisanego tekstu")
+        print("0 - Zakończ program")
+
+        input_mode_choice = input("\nTwój wybór (1/2/0): ")
+        match input_mode_choice:
+            case "2":
+                text = input("Wpisz tekst do analizy: ")
+                if not text.strip():
+                    print("Tekst nie może być pusty!")
+                    continue
+
+                sentiment = analyze_string(url)
+                print("Według modelu ten artykuł jest: ", sentiment)
+
+            case "1":
+                url = input("Wklej link do artykułu: ")
+                if not url.strip():
+                    print("Link nie może być pusty!")
+                    continue
+
+                sentiment = analyze_article_url(url)
+                print("Według modelu ten artykuł jest: ", sentiment)
+
+            case "0":
+                run_program = False
+                print("Zamykanie programu.")
+            case _:
+                print("Nieprawidlowy wybór")
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
