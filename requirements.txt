@@ -7,3 +7,5 @@ click==8.4.1
 nltk
 scipy
 joblib
+trafilatura
+requests

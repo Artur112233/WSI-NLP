@@ -19,10 +19,6 @@ def train_model():
     tp = TextProcessor()
     print("[PREPROCESSING (czasochlonne)]")
     X_processed = tp.preprocess_series(X_raw)
-    print("[SPLIT DATA]")
-    X_train, X_test, y_train, y_test = train_test_split(
-        X_processed, y, test_size=0.2, random_state=42
-    )
 
 # wynik z search grida dla LogisticRegression:
 # {'clf__C': 1.0, 'tfidf__max_df': 0.8, 'tfidf__min_df': 3, 'tfidf__ngram_range': (1, 3)}
@@ -31,7 +27,7 @@ def train_model():
         ('clf', LogisticRegression(class_weight='balanced', max_iter=1000, random_state=42, C = 1.0))
     ])
     print("[Trenowanie model]")
-    model_pipeline.fit(X_train, y_train)
+    model_pipeline.fit(X_processed, y)
     print(f"[Zapisywanie modelu do {model_path}]")
     joblib.dump(model_pipeline, model_path)
 

@@ -39,7 +39,7 @@ TODO TODO TODO każdy dataset coś tam opisać
 
 ## Końcowy program
 
-W efekcie prac i treningów uzyskaliśmy model dobrze działający na zlematyzowanym tekście. Dokonuje on wektoryzacji TF-IDF oraz klasyfikacji metodą Regresji Liniowej. Został on zapisany i może być załadowany w programie. Do modelu dobudowaliśmy prostą aplikację konsolową, do której można wkleić treść artykułu do oceny lub podać link do artykułu w internecie, artykuł zostaje przepuszczony przez preprocessor i model i aplikacja zwraca wynikowe określenie nastawienia artykułu.
+W efekcie prac i treningów uzyskaliśmy model dobrze działający na zlematyzowanym tekście. Dokonuje on wektoryzacji TF-IDF oraz klasyfikacji metodą Logistic Regression. Został on zapisany i może być załadowany w programie. Do modelu dobudowaliśmy prostą aplikację konsolową, do której można wkleić treść artykułu do oceny lub podać link do artykułu w internecie, artykuł zostaje przepuszczony przez preprocessor i model i aplikacja zwraca wynikowe określenie nastawienia artykułu.
 
 # Wyniki i obserwacje
 
