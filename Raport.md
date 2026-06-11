@@ -32,10 +32,8 @@ Wykonujemy wektoryzację TF-IDF - gotową implementację z pakietu sklearn.
 
 Mamy 3 klasy docelowe nastawienia artykułu - positive, neutral, negative. Dla tych klas oraz zwektoryzowanych tekstów trenujemy model klasyfikacyjny. W drodze eksperymentów w gotowym modelu postawnoiliśmy zostawić Logistic Regression z parametrami dostosowanymi przez Grid Search. Sprawdziliśmy też modele LinearSVC i Random Forest.
 
-## Datasety TODO skąd one pochodzą
-
-Wykorzystaliśmy datasety zawierające recenzje oraz artykuły. Recenzje są dobre do treningu, ze względu na swoją naturę bycia bardziej nacechowanymi, artykuły stanowią nasze docelowe zainteresowanie.
-TODO TODO TODO każdy dataset coś tam opisać
+## Datasety 
+Do projektu wykorzystaliśmy
 
 ## Końcowy program
 
