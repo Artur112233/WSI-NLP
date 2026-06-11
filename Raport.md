@@ -28,14 +28,26 @@ Proces stworzenia naszego modelu składa się z:
 
 Wykorzystaliśmy narzędzie `spaCy` dostępne w Pythonie w celu dokonania lematyzacji. Uzyskujemy w ten sposób tekst dobry do podjęcia jego wektoryzacji. W toku eksperymentów najlepsze efekty dała prosta lematyzacja - lematyzacji podlegają wszystkie słowa, bez np. usuwania stop-words.Pominęliśmy usuwanie stop-words, aby zachować słowa niosące nastawienie, takie jak negacje (np. "no", "don't"), które są kluczowe dla analizy sentymentu.
 
+Przetestowaliśmy trzy różne warianty preprocessingu. Model klasyfikatora oraz zbiór danych pozostały niezmienione.
+![Macierz pomyłek](./RaportImages/stop_words/macierz_pomylek_1.png)
+![Macierz pomyłek](./RaportImages/stop_words/macierz_pomylek_2.png)
+![Macierz pomyłek](./RaportImages/stop_words/macierz_pomylek_3.png)
 ### Wektoryzacji
 
 Wykonujemy wektoryzację `TF-IDF` - gotową implementację z pakietu sklearn.
 
 ### Klasyfikacji
 
-Mamy 3 klasy docelowe nastawienia artykułu - positive, neutral, negative. Dla tych klas oraz zwektoryzowanych tekstów trenujemy model klasyfikacyjny. W drodze eksperymentów w gotowym modelu postanowiliśmy zostawić `Logistic Regression` z parametrami dostosowanymi przez `Grid Search`. Sprawdziliśmy też modele `Linear SVC` i `Random Forest`.
+Mamy 3 klasy docelowe nastawienia artykułu - positive, neutral, negative. Dla tych klas oraz zwektoryzowanych tekstów trenujemy model klasyfikacyjny. W drodze eksperymentów w gotowym modelu postanowiliśmy zostawić `Logistic Regression` z parametrami dostosowanymi przez `Grid Search`. Sprawdziliśmy też modele `Linear SVC` i `Random Forest`. Siatka hiperparametrów do GridSearch'a dla każdego wariantu zaiwerała hiperparametry do wektoryzacji tekstu: `ngram_range` - określa z ilu słów mogą składać się zwroty, `max_df`- określa górny próg częstotliwości występowania słów, `min_df` - określa dolny próg występowania słowa. Dodatkowo dla modeli LogisticRegression oraz LinearSVC parametrem było `C (Inverse of regularization strength)` - określa zdolnośc uogólniania wiedzy, w modelu RandomForest parametrami były `n_estimators` oraz `max_depth`
 
+Eksperymenty zostały przeprowadzone dla tych samych danch:
+
+LinearSVC:
+![Test dla LinearSVC](./RaportImages/model_comparison/linear_svc_test.jpg)
+LogisticRegression:
+![Test dla LogisticRegression](./RaportImages/model_comparison/logistic_regression_test.jpg)
+RandomForest:
+![Test dla RandomForest](./RaportImages/model_comparison/random_forest_test.jpg)
 ## Datasety
 
 Do wytrenowania modelu wykorzystaliśmy przede wszystkim duży dataset recenzji produktów z platformy Amazon (Amazon Review Full Score Dataset). Zawiera on setki tysięcy recenzji, z których każda ma przypisaną wartość 1-5. Wartości ocen zmieniliśmy w nastawienie jako:

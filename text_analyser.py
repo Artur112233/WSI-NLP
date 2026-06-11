@@ -4,7 +4,7 @@ import trafilatura
 import requests
 
 class SentimentAnalyzer:
-    def __init__(self, model_path=r"Models/model.joblib"):
+    def __init__(self, model_path=r"./Models/model3.joblib"):
         self.text_processor = TextProcessor()
         self.model = joblib.load(model_path)
 

@@ -54,8 +54,8 @@ def train_model_full():
     X_news, y_news = newsmtsc_headlines_split(df_news)
     X_fin, y_fin = financial_headlines_split(df_fin)
     tp = TextProcessor()
-    X_raw = X_amazon+X_imdb+X_news+X_fin
-    y = y_amazon+y_imdb+y_news+y_fin
+    X_raw = pd.concat([X_amazon, X_imdb, X_news, X_fin], ignore_index=True)
+    y = pd.concat([y_amazon, y_imdb, y_news, y_fin], ignore_index=True)
     mask = pd.notna(y)
     X_raw = X_raw[mask]
     y = y[mask]

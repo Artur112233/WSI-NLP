@@ -6,7 +6,7 @@ import json
 import os
 
 
-def import_amazon_reviews_csv_file(path: str, nrows: int = 3000000) -> pd.DataFrame:
+def import_amazon_reviews_csv_file(path: str, nrows: int = 5_000) -> pd.DataFrame:
     df = pd.read_csv(
         path,
         nrows=nrows,
@@ -27,7 +27,7 @@ def amazon_reviews_split(df: pd.DataFrame) -> tuple[Series, Series]:
     Y = df['rating']
     return X, Y
 
-def import_financial_headlines_csv_file(path: str, nrows: int = 3000) -> pd.DataFrame:
+def import_financial_headlines_csv_file(path: str, nrows: int = 2000) -> pd.DataFrame:
     df = pd.read_csv(
         path,
         nrows=nrows,
@@ -46,7 +46,7 @@ def financial_headlines_split(df: pd.DataFrame) -> tuple[Series, Series]:
     Y = df['sentiment']
     return X, Y
 
-def import_newsmtsc_headlines_jsonl_file(path: str, nrows: int = 7700) -> pd.DataFrame:
+def import_newsmtsc_headlines_jsonl_file(path: str, nrows: int = 2000) -> pd.DataFrame:
     rows = []
 
     with open(path, 'r', encoding='utf-8') as f:
@@ -86,7 +86,7 @@ def newsmtsc_headlines_split(df: pd.DataFrame) -> tuple[Series, Series]:
     return X, Y
 
 
-def import_imdb_dataset(directory_path: str, nrows: int = 25000) -> pd.DataFrame:
+def import_imdb_dataset(directory_path: str, nrows: int = 2000) -> pd.DataFrame:
     rows = []
     half_rows = nrows // 2
 
