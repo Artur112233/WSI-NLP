@@ -26,7 +26,7 @@ Proces stworzenia naszego modelu składa się z:
 
 ### Preprocessingu tekstu
 
-Wykorzystaliśmy narzędzie `spaCy` dostępne w Pythonie w celu dokonania lematyzacji. Uzyskujemy w ten sposób tekst dobry do podjęcia jego wektoryzacji. W toku eksperymentów najlepsze efekty dała prosta lematyzacja - lematyzacji podlegają wszystkie słowa, bez np. usuwania stop-words. Celowo pominęliśmy usuwanie stop-words, aby zachować słowa niosące nastawienie, takie jak negacje (np. "no", "don't"), które są kluczowe dla analizy sentymentu.
+Wykorzystaliśmy narzędzie `spaCy` dostępne w Pythonie w celu dokonania lematyzacji. Uzyskujemy w ten sposób tekst dobry do podjęcia jego wektoryzacji. W toku eksperymentów najlepsze efekty dała prosta lematyzacja - lematyzacji podlegają wszystkie słowa, bez np. usuwania stop-words.Pominęliśmy usuwanie stop-words, aby zachować słowa niosące nastawienie, takie jak negacje (np. "no", "don't"), które są kluczowe dla analizy sentymentu.
 
 ### Wektoryzacji
 
