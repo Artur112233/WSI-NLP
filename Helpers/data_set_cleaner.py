@@ -86,7 +86,7 @@ def newsmtsc_headlines_split(df: pd.DataFrame) -> tuple[Series, Series]:
     return X, Y
 
 
-def import_imdb_dataset(directory_path: str, nrows: int = 50000) -> pd.DataFrame:
+def import_imdb_dataset(directory_path: str, nrows: int = 25000) -> pd.DataFrame:
     rows = []
     half_rows = nrows // 2
 

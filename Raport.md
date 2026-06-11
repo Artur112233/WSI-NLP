@@ -55,7 +55,7 @@ Dodatkowo posłużyliśmy się datasetami nagłówków artykułów z oceną sent
 
 Do sprawdzenia działania programu mieliśmy też zbiory danych z artykułami lub nagłówkami, jednak nieposiadających klasyfikacji sentymentu.
 
-Finalny model został wytrenowany na zbiorze TODO
+Finalny model został wytrenowany na wszystkich danych treningowych z etykietami sentymentu, tj. 3 000 000 rekordów recenzji z Amazon, 25 000 rekordów opinii z IMDB, 7000 nagłówków wiadomości politycznych i 3000 nagłówków wiadomości finansowych.
 
 ## Końcowy program
 
