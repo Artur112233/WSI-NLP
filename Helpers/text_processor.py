@@ -22,6 +22,8 @@ class TextProcessor:
 
     # maybe alternate stop words
     def preprocess_single(self, text: str) -> str:
+        if not isinstance(text, str):
+            return ""
         doc = self.nlp(text)
         # tokens = [token.lemma_.lower() for token in doc if not token.is_stop and token.is_alpha] lepiej działa bez stop words
         #tokens = [token.lemma_.lower() for token in doc if token.is_alpha] lepiej działa bez sprawdzania alfy

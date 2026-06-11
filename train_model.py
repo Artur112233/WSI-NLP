@@ -7,6 +7,7 @@ from Helpers.data_set_cleaner import import_amazon_reviews_csv_file, amazon_revi
     import_newsmtsc_headlines_jsonl_file, import_financial_headlines_csv_file, imdb_split, newsmtsc_headlines_split, \
     financial_headlines_split
 from Helpers.text_processor import TextProcessor
+import pandas as pd
 
 def train_model_amazon():
     print("[POCZATEK TWORZENIA MODELU]")
@@ -38,10 +39,10 @@ def train_model_amazon():
 def train_model_full():
     print("[POCZATEK TWORZENIA MODELU]")
     amazon_data_path = r".\Data\amazon_train.csv"
-    imdb_dir_path = r".\Data\imdb_train.csv"
+    imdb_dir_path = r".\Data\imdb_train"
     newsmtsc_data_path = r".\Data\newsmtsc_train.jsonl"
     financial_data_path = r".\Data\financial_all.csv"
-    model_path = r".\Models\model2.joblib"
+    model_path = r".\Models\model3.joblib"
 
     df_amazon = import_amazon_reviews_csv_file(amazon_data_path)
     df_imdb = import_imdb_dataset(imdb_dir_path)
@@ -55,6 +56,9 @@ def train_model_full():
     tp = TextProcessor()
     X_raw = X_amazon+X_imdb+X_news+X_fin
     y = y_amazon+y_imdb+y_news+y_fin
+    mask = pd.notna(y)
+    X_raw = X_raw[mask]
+    y = y[mask]
     print("[PREPROCESSING (czasochlonne)]")
     X_processed = tp.preprocess_series(X_raw)
 
@@ -70,3 +74,6 @@ def train_model_full():
     joblib.dump(model_pipeline, model_path)
 
     print("[KONIEC TWORZENIA MODELU]")
+
+
+train_model_full()
