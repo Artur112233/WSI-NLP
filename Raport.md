@@ -67,7 +67,7 @@ Dodatkowo posłużyliśmy się datasetami nagłówków artykułów z oceną sent
 
 Do sprawdzenia działania programu mieliśmy też zbiory danych z artykułami lub nagłówkami, jednak nieposiadających klasyfikacji sentymentu.
 
-Finalny model został wytrenowany na wszystkich danych treningowych z etykietami sentymentu, tj. 3 000 000 rekordów recenzji z Amazon, 25 000 rekordów opinii z IMDB, 7000 nagłówków wiadomości politycznych i 3000 nagłówków wiadomości finansowych.
+Finalny model został wytrenowany na wszystkich danych treningowych z etykietami sentymentu, tj. 5000 rekordów recenzji z Amazon, 2000 rekordów opinii z IMDB, 2000 nagłówków wiadomości politycznych i 2000 nagłówków wiadomości finansowych.
 
 ## Końcowy program
 
@@ -76,9 +76,18 @@ W efekcie prac i treningów uzyskaliśmy model dobrze działający na zlematyzow
 # Wyniki i obserwacje
 
 ## Ocena wyników treningu i działania modelu
+Przeprowadziliśmy test na zbiorze testowym recenzji z Amazon (3000 rekordów) i dla modelu wyniki są takie:
+![WYNIKI AMAZON](./RaportImages/amazon_testing.jpg)
+Można zauważyć że sa gorsze od wyników dla modelu opartego wyłącznie na recenzjach amazona. Kolejnym testem było sprawdzenie wyników na sztucznych 2-3 zdaniowych historiach stworzonych przez Gemini a wyniki są następujące:
+![MOCK TEST](./RaportImages/mock_stories_testing.jpg)
+W tym eksperymencie widać że nasz model dobrze sobie radzi ze odnajdywaniem pozytywnych zdań, za to w tym wypadku ani razu nie pokazał Negative, tylko zachowawczo przekazywał Neutral. Znajduje się też 1 wyraźny błąd. Ostatni eksperyment polegał na podaniu linków do artykułów i porównaniu wyników.
+![ARTICLE TEST](./RaportImages/article_testing.jpg)
+Tutaj możemy zauważyć że model nie radzi sobie z długimi tekstami, nie może odróżnić negativod od positive, dodatkowo aż 8 na 10 razy stwierdził positive
 
 ## Obserwacje
-
+- skrzywienie w kierunku oceny pozytywnej. W testach na rzeczywistych artykułach oraz dłuższych formach tekstowych model wykazuje tendencję do nadużywania klasy pozytywnej. Skutkuje to błędnym przypisywaniem etykiety wiadomościom całkowicie neutralnym (np. relacje sportowe) oraz ewidentnie negatywnym (np. doniesienia o skandalach).
+- Model ma ogromne trudności z rozpoznaniem negatywnego wydźwięku w tekstach informacyjnych i historiach. Wynika to z faktu, że doniesienia o wypadkach czy przestępstwach pisane są, obiektywnym językiem.
+- We wszystkich przeprowadzonych eksperymentach, włączając w to testy na referencyjnym zbiorze z platformy Amazon  identyfikacja tekstów neutralnych sprawiała modelowi największy problem. Algorytm gubi się przy takich tekstach i najczęściej próbuje na siłę zakwalifikować je do jednej ze skrajności.
 # Podsumowanie
 
 ## Wnioski
@@ -87,7 +96,7 @@ W efekcie prac i treningów uzyskaliśmy model dobrze działający na zlematyzow
 - Nie udało nam się znaleźć w internecie datasetu dokładnie odpowiadającego naszemu zagadnieniu - pełnych artykułów z klasyfikacją nastawienia autora. Dostępne zbiory danych dotyczyły recenzji - bardziej szczegółowego zagadnienia, bardziej nacechowanego, mniejszej długości - oraz nagłówków artykułów - to samo zagadnienie, natomiast dużo krótszy tekst.
 - W sposób mierzalny mogliśmy sprawdzić działanie modelu na danych przede wszystkim typu recenzje oraz nagłówki, działanie dla pełnych artykułów mogliśmy sprawdzić jedynie ręcznie - podając kokretny artykuł modelowi i samemu oceniając otrzymaną ocenę nastawienia.
 - W projekcie zaimplementowaliśmy metody oceny sentymentu tekstu i sprawdziliśmy ich zastosowanie w odniesieniu do artykułów. Model wytrenowany na różnych recenzjach i nagłówkach pozwala oceniać także dłuższe artykuły. Widać, że metody oceny sentymentu są uniwersalne, a dostosowanie do konkretnych tekstów to kwestia fine-tuningu.
-
+- Przeprowadzone testy uwidoczniły wyraźne ograniczenia naszego projektu. Wynikają one z różnicy między zastosowanieam a danymi treningowymi.
 ## Pole do rozwoju
 
 - Niewątpliwie polem rozwoju zagadnienia podjętego w projekcie jest tworzenie datasetów klasyfikujących całe artykuły według nastawienia autora, brakuje takowych łatwo dostępnych.
